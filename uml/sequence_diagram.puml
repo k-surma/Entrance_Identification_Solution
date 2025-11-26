@@ -1,0 +1,31 @@
+@startuml
+title Sequence Diagram - Entry Verification Flow
+
+actor Employee as emp
+participant "Frontend\n(Camera + QR)" as fe
+participant "EntryController\n(FastAPI)" as api
+participant "QRService" as qr
+participant "FaceService" as face
+participant "Database" as db
+participant "ImageStorage" as storage
+
+emp -> fe: Skan QR + zdjęcie twarzy
+fe -> api: POST /entry\n(qr_code, face_image)
+
+api -> qr: validate(qr_code)
+qr --> api: user_id / invalid
+
+api -> face: verify(face_image, user_id)
+face --> api: match_score, match_result
+
+api -> storage: save(face_image)
+storage --> api: image_path
+
+api -> db: insert AccessLog\n(user, badge, result, score, image)
+db --> api: OK
+
+api --> fe: JSON response\n{result: ACCEPT/REJECT}
+
+fe --> emp: Wyświetl komunikat
+
+@enduml

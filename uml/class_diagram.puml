@@ -1,0 +1,39 @@
+@startuml
+title Entrance Identification System - Class Diagram
+
+class User {
+    +id: int
+    +first_name: str
+    +last_name: str
+    +face_id: str
+    +is_active: bool
+}
+
+class Badge {
+    +id: int
+    +qr_code: str
+    +valid_until: date
+    +user_id: int
+}
+
+class AccessLog {
+    +id: int
+    +timestamp: datetime
+    +result: ResultEnum
+    +match_score: float
+    +badge_id: int
+    +user_id: int
+    +image_path: str
+}
+
+enum ResultEnum {
+    ACCEPT
+    REJECT
+    SUSPICIOUS
+}
+
+User "1" -- "1..*" Badge
+User "1" -- "1..*" AccessLog
+Badge "1" -- "0..*" AccessLog
+
+@enduml
