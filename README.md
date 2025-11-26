@@ -35,4 +35,30 @@ Panel admina: CRUD pracowników, przepustek, uprawnień, list punktów wejścia,
 Raporty: listy nadużyć (kiedy przepustka użyta przez inną osobę), statystyki (odrzuconych wejść / procent dopasowań), eksport CSV/PDF.
 
 
+## 4. Instalacja i uruchomienie
+1. Sklonuj repozytorium:
+```
+git clone <repo_url>
+cd entrance_Identification_Solution
+```
+2. Utwórz wirtualne środowisko i aktywuj je:
+```
+python -m venv venv
+source venv/bin/activate      # Linux/macOS
+venv\Scripts\activate         # Windows
+```
+3. Zainstaluj wszystkie zależności:
+```
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+4. Skopiuj plik środowiskowy i ustaw swoje zmienne:
 
+5. Uruchom aplikację:
+```
+bash run.sh
+```
+
+6. Wejdź w przeglądarce:
+   * Frontend:
+   * Panel admin: 

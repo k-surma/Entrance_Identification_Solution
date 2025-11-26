@@ -1,0 +1,60 @@
+entrance_Identification_Solution/
+│
+├── backend/                       # Wszystko co związane z backendem FastAPI
+│   ├── main.py                    # Punkt wejścia aplikacji FastAPI
+│   ├── config.py                  # Konfiguracje (baza danych, Face API, inne)
+│   │
+│   ├── api/                       # Endpointy REST
+│   │   ├── entry.py               # Obsługa wejścia (QR + zdjęcie twarzy)
+│   │   ├── admin.py               # Panel admina (CRUD, logi)
+│   │   ├── users.py               # CRUD użytkowników
+│   │   └── reports.py             # Generowanie raportów / statystyk
+│   │
+│   ├── services/                  # Logika biznesowa / integracje
+│   │   ├── face_service.py        # Obsługa Azure Face API / lokalny model
+│   │   ├── qr_service.py          # Weryfikacja QR kodów
+│   │   ├── image_storage.py       # Zapis zdjęć lokalnie
+│   │   └── report_service.py      # Tworzenie raportów (CSV/PDF)
+│   │
+│   ├── models/                    # Modele bazodanowe SQLAlchemy
+│   │   ├── db.py                  # Sesja DB, inicjalizacja
+│   │   ├── user.py
+│   │   ├── badge.py
+│   │   └── access_log.py
+│   │
+│   ├── schemas/                   # Pydantic Schemas dla API
+│   │   ├── user_schema.py
+│   │   ├── entry_schema.py
+│   │   └── report_schema.py
+│   │
+│   ├── utils/                     # Funkcje pomocnicze
+│   │   ├── security.py            # Hashy, JWT (opcjonalnie)
+│   │   ├── validators.py          # Walidacja danych wejściowych
+│   │   └── time.py                # Funkcje związane z datą/czasem
+│   │
+│   └── templates/                 # HTML do frontend minimalnego
+│       ├── index.html             # Kamera + QR
+│       ├── admin.html             # Panel admin
+│       └── login.html
+│
+├── frontend/                       # Frontend minimalistyczny
+│   ├── js/
+│   │   ├── camera.js              # Obsługa kamery
+│   │   ├── qr_reader.js           # Obsługa QR
+│   │   └── api.js                 # fetch() do backendu
+│   ├── css/
+│   │   └── style.css
+│   └── index.html                  # Startowa strona frontendu
+│
+├── data/                           # Dane przechowywane lokalnie
+│   ├── images/                     # Zdjęcia wejść
+│   └── logs/                       # Opcjonalne logi systemowe
+│
+├── uml/                            # Diagramy UML w PlantUML
+│   ├── class_diagram.puml
+│   └── sequence_diagram.puml
+│
+├── README.md                        # Dokumentacja projektu
+├── requirements.txt                 # Wszystkie zależności Pythona
+├── run.sh                            # Skrypt do uruchomienia aplikacji
+└── .env.example                      # Przykładowy plik środowiskowy
