@@ -20,28 +20,19 @@ Celem jest webowy system kontroli wejść dla dużej fabryki, który łączy: sk
 
 ## 2. Dokumentacja techniczna - potencjalna
 
-Backend (minimalnie): 
-Baza danych: 
-Face recognition: 
-Skany QR:  
-Kontenery & deployment: 
-Monitoring/logi: 
+* Frontend: HTML + JS (kamera, skan QR, panel admina)
+* Backend: FastAPI (REST API)
+* Face Recognition: Azure Face API (domyślnie) / opcjonalnie lokalny model
+* Baza danych: SQLite (dev) / PostgreSQL (prod)
+* Storage: lokalny katalog /data/images/
 
 ## 3. Wymagania funkcjonalne (high-level)
 
 Przy próbie wejścia: system przyjmuje zdjęcie twarzy + odczyt QR. Weryfikuje ważność przepustki i porównuje twarz z rekordem pracownika powiązanym z tą przepustką.
-
 Jeżeli twarz pasuje i przepustka ważna -> wejście zatwierdzone i zapis. Jeżeli pasuje przepustka ważna ale twarz nie pasuje -> odnotować jako "podejrzenie nadużycia" i zablokować/wyjątkowo wymusić interwencję.
-
 Wszystkie zdarzenia logowane z: timestamp, punkt wejścia, id przepustki, id pracownika (jeśli dopasowano), score dopasowania twarzy, zdjęcie (thumbnail) i pełne zdjęcie (retencja zależna od polityki), operator (jeżeli interwencja).
-
 Panel admina: CRUD pracowników, przepustek, uprawnień, list punktów wejścia, przegląd logów, generowanie raportów.
-
 Raporty: listy nadużyć (kiedy przepustka użyta przez inną osobę), statystyki (odrzuconych wejść / procent dopasowań), eksport CSV/PDF.
 
-## 4. Wymagania niefunkcjonalne
 
-
-
-## 5. Architektura systemu (komponenty)
 
